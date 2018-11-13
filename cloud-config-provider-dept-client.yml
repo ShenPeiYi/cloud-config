@@ -49,14 +49,14 @@ info:
 
 ---
 server:
-  port: 8002
+  port: 8001
 
 spring:
   application:
     name: cloud-provider-dept
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/clouddb02?useSSL=false
+    url: jdbc:mysql://localhost:3306/clouddb03?useSSL=false
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
@@ -81,7 +81,7 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/
   instance:
-    instance-id: cloud-config-provider-dept-8002
+    instance-id: cloud-config-provider-dept-8001
     prefer-ip-address: true
 
 info:
