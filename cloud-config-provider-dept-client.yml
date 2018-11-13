@@ -1,0 +1,91 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+server:
+  port: 8001
+
+spring:
+  profiles: dev
+  application:
+    name: cloud-provider-dept
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/clouddb01?useSSL=false
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+mybatis:
+  mapper-locations: classpath:/mybatis/*Mapper.xml
+  type-aliases-package: com.spy.springcloud.entity
+  configuration:
+    #驼峰命名
+    map-underscore-to-camel-case: true
+    #使用列别名替换列名
+    use-column-label: true
+    cache-enabled: false
+
+logging:
+  level:
+    com.spy.springcloud.mapper: debug
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: cloud-config-provider-dept-8001
+    prefer-ip-address: true
+
+info:
+  app.name: spy-microservicecloud
+  company.name: www.spy.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
+
+---
+server:
+  port: 8002
+
+spring:
+  application:
+    name: cloud-provider-dept
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/clouddb02?useSSL=false
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+mybatis:
+  mapper-locations: classpath:/mybatis/*Mapper.xml
+  type-aliases-package: com.spy.springcloud.entity
+  configuration:
+    #驼峰命名
+    map-underscore-to-camel-case: true
+    #使用列别名替换列名
+    use-column-label: true
+    cache-enabled: false
+
+logging:
+  level:
+    com.spy.springcloud.mapper: debug
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: cloud-config-provider-dept-8002
+    prefer-ip-address: true
+
+info:
+  app.name: spy-microservicecloud
+  company.name: www.spy.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
